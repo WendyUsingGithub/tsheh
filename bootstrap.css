@@ -68,7 +68,13 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+.center-alignment-horizontal {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: center;
+  align-items: center;
+}
 
 /* content */
 
