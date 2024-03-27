@@ -77,7 +77,6 @@
 .article .navitem:focus {
     color: var(--tsheh-black);;
 }
-
 /* nav search box */
 
 .article .nav-search-box {
@@ -121,7 +120,7 @@
     width: 15rem;
     cursor: pointer;
 }
-.article .nav-search-box:hover input,
+.article  .nav-search-box:hover input,
 .article .nav-search-box:valid input,
 .article .nav-search-box:hover input:active,
 .article .nav-search-box:hover input:focus {
@@ -143,22 +142,18 @@ input[type="search" i]::-webkit-search-cancel-button {
 
 /* article */
 
-.article .middle {
-    margin: 0 2rem 0 2rem;
-}
-
 .article h1{
     font-size: 2.5rem;
     font-weight: bold;
     line-height: 1.7;
     letter-spacing: 0.05rem;
     text-align: center;
-    padding-bottom: 2rem;
     color: var(--tsheh-black);
 }
 .article .paragraphs{
-    padding: 2rem 0 9rem 0;
+    padding: 0 2rem 9rem 2rem;
     border-bottom: solid 1.5px var(--tsheh-light-gray);
+    margin-top: 5rem;
 }
 .article p{
     font-size: 1.2rem;
@@ -173,7 +168,7 @@ input[type="search" i]::-webkit-search-cancel-button {
 
 .article .article-info {
     text-align: left;
-    padding: 11rem 0 10rem 0;
+    padding: 11rem 2rem 10rem 2rem;
 }
 .article .author-name {
     padding-bottom: 2rem;
