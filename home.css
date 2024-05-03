@@ -304,3 +304,40 @@ input[type="search" i]::-webkit-search-cancel-button {
     margin: 4rem auto 4rem auto;
     border-bottom: solid 1px #E8E8E8;
 }
+
+/* subscribe button */
+
+#subscribe-button {
+    display: flex;
+    cursor: pointer;
+    padding: 1.5rem 0 1.5rem 0;
+}
+  
+#subscribe-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    padding-right: 1rem;
+}
+
+#subscribe-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+    &:before {
+        position: absolute;
+        content: '';
+        width: 0.9rem;
+        height: 0.15rem;
+        background: var(--tsheh-black);
+    }
+    &:after {
+        position: absolute;
+        content: '';
+        width: 0.9rem;
+        height: 0.15rem;
+        background: var(--tsheh-black);
+        transform: rotate(90deg);
+    }
+}
