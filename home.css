@@ -6,9 +6,9 @@
 
 :root {
     --tsheh-black: #404040;
-    --tsheh-gray: #BEBEBE;
-    --tsheh-light-gray: #F0F0F0;
-    --tsheh-light-light-gray: #f4f4f4;
+    --tsheh-gray: #bebebe;
+    --tsheh-light-gray: #f0f0f0;
+    --tsheh-light-light-gray: #f6f6f6;
 }
 
 /* nav bar */
@@ -71,12 +71,13 @@
     z-index: 1;
 }
 .home .navitem:hover {
-    color: #808080;
+    color: #a5a5a5;
 }
 .home .navitem:active,
 .home .navitem:focus {
     color: var(--tsheh-black);;
 }
+
 /* nav search box */
 
 .home .nav-search-box {
@@ -120,7 +121,7 @@
     width: 15rem;
     cursor: pointer;
 }
-.home  .nav-search-box:hover input,
+.home .nav-search-box:hover input,
 .home .nav-search-box:valid input,
 .home .nav-search-box:hover input:active,
 .home .nav-search-box:hover input:focus {
@@ -130,7 +131,7 @@
 .home .nav-search-box:hover .nav-text,
 .home .nav-search-box:hover .nav-text,
 .home .nav-search-box:hover .nav-text {
-    color: #808080;
+    color: #a5a5a5;
 }
 .home .nav-search-box:valid .nav-text {
     color: var(--tsheh-black);
@@ -140,37 +141,46 @@ input[type="search" i]::-webkit-search-cancel-button {
     display: none;
 }
 
-/* author info */
+/* subscribe button */
 
-.home .author-name {
+#subscribe-button {
+    display: inline-flex;
+    cursor: pointer;
+    padding: 3rem 0 2rem 0;
+}
+
+#subscribe-text {
+    color: var(--tsheh-black);
     font-size: 1.4rem;
     font-weight: bold;
     line-height: 1.7;
     letter-spacing: 0.05rem;
     text-align: left;
-    margin-top: 1.8rem;
-    color: var(--tsheh-black);
+    padding-right: 1.3rem;
 }
-.home .subscribe-button {
-    display: inline-flex;
-    font-size: 1rem;
-    letter-spacing: 0.1rem;
-    /* color: #A9A9A9; */
-    font-weight: 500;
-    cursor: pointer;
-    overflow: hidden; 
-    margin: 1rem 0 1.2rem 0;
+
+#subscribe-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
 }
-.home .subscribe-button:hover,
-.home .subscribe-button:focus {
-    background-color: var(--tsheh-black);
-    color: white;
+#subscribe-icon-vertical {
+    position: absolute;
+    width: 1rem;
+    height: 0.15rem;
+    background:var(--tsheh-black);
 }
-.home .subscribe-button:active {
-    background-color: var(--tsheh-light-gray);
-    border: solid var(--tsheh-light-gray) 1.5px;
-    color: var(--tsheh-black);
+#subscribe-icon-horizontal {
+    position: absolute;
+    width: 1rem;
+    height: 0.15rem;
+    background:var(--tsheh-black);
+    transform: rotate(90deg);
 }
+
+/* author info */
+
 .home .author-intro {
     font-size: 1rem;
     line-height: 1.7;
@@ -187,21 +197,21 @@ input[type="search" i]::-webkit-search-cancel-button {
 }
 .home .home-tag {
     display: inline-flex;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 400;
     border-radius: 10rem;
-    border: solid #A9A9A9 1.5px;
-    /* background-color: var(--tsheh-light-light-gray); */
-    color: #A9A9A9;
+    border: solid var(--tsheh-light-light-gray) 1.5px;
+    background-color: var(--tsheh-light-light-gray);
+    color: #8c8c8c;
     cursor: pointer;
-    padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+    padding: 0.15rem 0.5rem 0.15rem 0.5rem;
     margin: 0.5rem 0.5rem 0.5rem 0;
 }
 .home .home-tag:hover,
 .home .home-tag:focus {
-    border: solid var(--tsheh-gray) 1px;
+    border: solid var(--tsheh-gray) 1.5px;
     background-color: white;
-    color: var(--tsheh-gray);
+    color: #a9a9a9;
 }
 .home .home-tag:active {
     background-color: var(--tsheh-light-gray);
@@ -305,39 +315,8 @@ input[type="search" i]::-webkit-search-cancel-button {
     border-bottom: solid 1px #E8E8E8;
 }
 
-/* subscribe button */
-
-#subscribe-button {
-    display: flex;
-    cursor: pointer;
-    padding: 1.5rem 0 1.5rem 0;
-}
-  
-#subscribe-text {
-    font-size: 1.05rem;
-    font-weight: 700;
+.home .recommand-slogan {
+    font-size: 1rem;
     letter-spacing: 0.1rem;
-    padding-right: 1rem;
-}
-
-#subscribe-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.5s ease-in-out;
-    &:before {
-        position: absolute;
-        content: '';
-        width: 0.9rem;
-        height: 0.15rem;
-        background: var(--tsheh-black);
-    }
-    &:after {
-        position: absolute;
-        content: '';
-        width: 0.9rem;
-        height: 0.15rem;
-        background: var(--tsheh-black);
-        transform: rotate(90deg);
-    }
+    color: #b1b1b1;
 }
