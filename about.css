@@ -4,13 +4,6 @@
   box-sizing: border-box;
 }
 
-:root {
-    --tsheh-black: #404040;
-    --tsheh-gray: #BEBEBE;
-    --tsheh-light-gray: #F0F0F0;
-    --tsheh-light-light-gray: #f4f4f4;
-}
-
 .about h1 {
     font-weight: 900;
     font-size: 2rem;
@@ -50,7 +43,7 @@
 }
 .article .paragraphs{
     padding: 0 2rem 5rem 2rem;
-    border-bottom: solid 1.5px var(--tsheh-light-gray);
+    border-bottom: solid 1.5px var(--tsheh-light-light-gray);
     margin: 4rem 0 5rem 0;
 }
 .article .paragraph{

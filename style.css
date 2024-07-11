@@ -1,30 +1,103 @@
+:root {
+    --tsheh-dark-black: #2a2a2a;
+    --tsheh-black: #3c3c3c;
+    --tsheh-dark-gray: #a5a5a5;
+    --tsheh-gray: #b1b1b1;
+    --tsheh-light-gray: #c0c0c0;
+    --tsheh-light-light-gray: #F0F0F0;
+}
+
+::-moz-selection {
+    background-color: transparent;
+    color: #000;
+}
+::selection {
+    background-color: transparent;
+    color: #000;
+}
+
+html {
+    font-size: 15px;
+}
+body {
+    margin: 0;
+    font-family: "Noto Sans TC";
+    color: var(--tsheh-black);
+}
+.vh {
+    height: 100vh;
+}
+.center-alignment {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.center-alignment-horizontal {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.center-alignment-vertical {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* content */
+
+.tsheh .content {
+    padding-top: 10rem;
+    max-width: inherit;
+    width: 100%;
+}
+
+/* middle */
+
+.tsheh .middle {
+    margin: 0 2rem 0 2rem;
+}
+
 /* nav bar */
 
 #navbar {
-    transition: top 0.5s;
+    transition: all 0.5s;
 }
-.navbar {
+.tsheh .navbar {
     background-color: white;
     position: fixed;
     top: 0;
     width: 100%;
     height: 4rem;
-    box-shadow: #00000010 0.2rem 0.4rem 0.8rem;
     padding: 0rem 3rem 0px 3rem;
+    box-shadow: #00000010 0.2rem 0.4rem 0.8rem;
+    z-index: 100;
 }
-.logo {
+.tsheh .logo {
     font-weight: 900;
     font-size: 1.4rem;
     color: var(--tsheh-black);
     text-decoration: none;
+    transition: all 0.3s;
+    transition-timing-function: ease-out;
 }
-.logo:hover {
-    color: var(--tsheh-gray);
+.tsheh .logo:hover {
+    color: var(--tsheh-dark-gray);
 }
-.navitems {
+.tsheh .navitems {
     margin-left: auto;
 }
-.navitem {
+.tsheh .navitem {
     display: inline-flex;
     position: relative;
     font-size: 1.05rem;
@@ -36,37 +109,23 @@
     overflow: hidden;
     color: var(--tsheh-black);
     text-decoration: none;
-    margin-top: auto;
-    margin-bottom: auto;
+    transition: all 0.3s;
+    transition-timing-function: ease-out;
 }
-.navitem:before {
-    position: absolute;     
-    top: 50%;
-    left: 50%;
-    content: "";
-    aspect-ratio: 1;
-    background: var(--tsheh-light-light-gray);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.5s;
-    width: 0;
-}
-.navitem:hover:before {
-    width: 100%;
-}
-.nav-text {
+.tsheh .nav-text {
     z-index: 1;
 }
-.navitem:hover {
-    color: #808080;
+.tsheh .navitem:hover {
+    color: var(--tsheh-dark-gray);
 }
-.navitem:active,
-.navitem:focus {
+.tsheh .navitem:active,
+.tsheh .navitem:focus {
     color: var(--tsheh-black);;
 }
+
 /* nav search box */
 
-.nav-search-box {
+.tsheh .nav-search-box {
     display: inline-flex;
     position: relative;
     font-size: 1.05rem;
@@ -78,9 +137,9 @@
     overflow: hidden;
     color: var(--tsheh-black);
     text-decoration: none;
-    transition: width 0.5s;
+    transition: all 1s;
 }
-.nav-search-box .search-box-text{
+.tsheh .nav-search-box .search-box-text{
     display: inline-flex;
     position: absolute;
     top: 0;
@@ -88,41 +147,49 @@
     font-size: 1.05rem;
     width: 3rem;
     height: 3rem;
+    transition: all 1s;
 }
-.nav-search-box input{
+.tsheh .nav-search-box input{
     display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    text-indent: 1.5rem;
+    text-indent: 3rem;
     outline: none;
     border: none;
-    font-size: 1em;
-    border-radius: 10rem;
+    font-size: 1.05rem;
 }
-.nav-search-box:hover,
-.nav-search-box:valid {
+.tsheh .nav-search-box:hover,
+.tsheh .nav-search-box:valid {
     width: 15rem;
     cursor: pointer;
 }
- .nav-search-box:hover input,
-.nav-search-box:valid input,
-.nav-search-box:hover input:active,
-.nav-search-box:hover input:focus {
+.tsheh .nav-search-box:hover input,
+.tsheh .nav-search-box:valid input,
+.tsheh .nav-search-box:hover input:active,
+.tsheh .nav-search-box:hover input:focus {
     display: block;
-    background: var(--tsheh-light-light-gray);
+    color: var(--tsheh-dark-gray);
+    font-weight: 500;
 }
- .nav-search-box:hover .nav-text,
-.nav-search-box:hover .nav-text,
-.nav-search-box:hover .nav-text {
-    color: #808080;
-}
-.nav-search-box:valid .nav-text {
+
+.tsheh .nav-search-box:hover .search-box-text,
+.tsheh .nav-search-box:active .search-box-text,
+.tsheh .nav-search-box:focus .search-box-text,
+.tsheh .nav-search-box:valid .search-box-text {
+    right: 12rem;
     color: var(--tsheh-black);
 }
 
 input[type="search" i]::-webkit-search-cancel-button {
     display: none;
+}
+
+.tsheh .divider {
+    display: flex;
+    width: 80%;
+    margin: 4rem auto 4rem auto;
+    border-bottom: solid 1px #E8E8E8;
 }
