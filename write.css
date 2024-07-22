@@ -96,7 +96,7 @@
     max-width: 100%;
     max-height: 0;
     overflow: scroll;
-    transition: all 0.3s linear;
+    transition: max-height 0.3s linear;
 }
 
 #prepare-publish-accordin::-webkit-scrollbar {
@@ -230,8 +230,12 @@
   transition: all 0.2s;
 }
 
-/* add article tag */
+/* tag picker */
 
+.write .tag-picker {
+  justify-content: center;
+  margin-bottom: 4.5rem;
+}
 .write .tag-icon {
   display: inline-flex;
   height: 2.5rem;
@@ -274,18 +278,19 @@
   font-size: 1rem;
   font-weight: 450;
 }
+
 .write .article-tags {
-  justify-content: center;
-  margin-bottom: 4.5rem;
+  font-size: 0;
 }
 .write .article-tag {
   position: relative;
   display: inline-flex;
+  max-width: 100%;
   font-size: 0.95rem;
   font-weight: 450;
   color: var(--tsheh-black);
   cursor: pointer;
-  padding: 0.2rem 0.8rem 0.2rem 0rem;
+  padding: 0.2rem 1rem 0.2rem 0rem;
 }
 .write .article-tag .the-icon-tag {
   font-family: "Sometype Mono";
@@ -293,6 +298,7 @@
   left: 0;
   font-weight: 500;
   font-size: 1.25rem;
+  color: var(--tsheh-black);
   transition: opacity 0.3s;
   transition-delay: opacity 0.15s;
 }
@@ -318,6 +324,24 @@
   transition: opacity 0.3s;
   transition-delay: 0.15s;
 }
+
+/* @keyframes title {
+  0% {
+    opacity: 1;
+    max-width: 40%;
+    width: auto;
+  }
+  25% {
+    opacity: 0;
+    max-width: 40%;
+  }
+  100% {
+    opacity: 0;
+    max-width: 0;
+  }
+
+} */
+
 .write .tag-text {
   display: inline-flex;
   font-size: 0.95rem;
@@ -329,7 +353,9 @@
 .write .article-tag:focus {
   color: var(--tsheh-gray);
 }
-
+.write .article-tag-suggestions {
+  transition: all 5s linear;
+}
 .write .article-tag-suggestion {
   position: relative;
   display: inline-flex;
@@ -345,8 +371,6 @@
   left: 0;
   font-weight: 500;
   font-size: 1.25rem;
-  transition: opacity 0.3s;
-  transition-delay: opacity 0.15s;
 }
 .write .article-tag-suggestion:hover .the-icon-tag {
   color: var(--tsheh-black);

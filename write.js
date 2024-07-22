@@ -102,7 +102,7 @@ function renderCalendar()
 /* go to next month */
 if(nextBtn)
 {
-  nextBtn.addEventListener("click", () =>
+  nextBtn.addEventListener("click", function()
   {
     month++;
     if (month == 12) {
@@ -116,7 +116,7 @@ if(nextBtn)
 /* go to prev month */
 if(prevBtn)
 {
-  prevBtn.addEventListener("click", () =>
+  prevBtn.addEventListener("click", function()
     {
       month--;
       if (month == -1) {
@@ -130,7 +130,7 @@ if(prevBtn)
 /* go to today */
 if(year_month)
 {
-  year_month.addEventListener("click", () =>
+  year_month.addEventListener("click", function()
   {
     month = date.getMonth();
     year = date.getFullYear();
@@ -140,38 +140,29 @@ if(year_month)
 
 renderCalendar();
 
-// let article_tags = document.getElementsByClassName("article-tag");
-// let article_tags_suggestion = document.getElementsByClassName("article-tag-suggestion");
+let article_tag_arr = document.getElementsByClassName("article-tag");
+let article_tag_suggestions_arr = document.getElementsByClassName("article-tag-suggestion");
+let article_tags = document.getElementsByClassName("article-tags");
+let article_tag_suggestions = document.getElementsByClassName("article-tag-suggestions");
 
-// for (let i = 0; i < article_tags.length; i++)
-// {
-//   article_tags[i].addEventListener("mouseenter", function()
-//   {
-//     var icon = article_tags[i].children[0];
-//     icon.innerHTML = "-";
-//   })
+for (let i = 0; i < article_tag_arr.length; i++)
+{
+  article_tag_arr[i].addEventListener("click", function()
+  {
+    $(this).animate({opacity: 0}, 0);
+    $(this).hide(1000);    
 
-//   article_tags[i].addEventListener("mouseleave", function()
-//   {
-//     var icon = article_tags[i].children[0];
-//     icon.innerHTML = "#";
-//   })
-// }
-
-// for (let i = 0; i < article_tags_suggestion.length; i++)
-//   {
-//     article_tags_suggestion[i].addEventListener("mouseenter", function()
-//     {
-//       var icon = article_tags_suggestion[i].children[0];
-//       icon.innerHTML = "#";
-//     })
-  
-//     article_tags_suggestion[i].addEventListener("mouseleave", function()
-//     {
-//       var icon = article_tags_suggestion[i].children[0];
-//       icon.innerHTML = "+";
-//     })
-//   }
+    setTimeout(function() 
+    {
+      article_tags[0].removeChild(this);
+      this.classList.add('article-tag-suggestion');
+      this.classList.remove('article-tag');
+      article_tag_suggestions[0].appendChild(this);
+      $(this).show();
+      $(this).animate({opacity: 1}, 1000);
+    }.bind(this), 1050);
+  });
+}
 
 function autoSize(textarea)
 {
