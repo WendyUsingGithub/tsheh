@@ -144,14 +144,15 @@ let article_tag_arr = document.getElementsByClassName("article-tag");
 let article_tag_suggestions_arr = document.getElementsByClassName("article-tag-suggestion");
 let article_tags = document.getElementsByClassName("article-tags");
 let article_tag_suggestions = document.getElementsByClassName("article-tag-suggestions");
+let tag_picker = document.getElementsByClassName("tag-picker");
+
 
 for (let i = 0; i < article_tag_arr.length; i++)
 {
   article_tag_arr[i].addEventListener("click", function()
   {
     $(this).animate({opacity: 0}, 0);
-    $(this).hide(1000);    
-
+    $(this).hide(1000);
     setTimeout(function() 
     {
       article_tags[0].removeChild(this);
@@ -159,14 +160,36 @@ for (let i = 0; i < article_tag_arr.length; i++)
       this.classList.remove('article-tag');
       article_tag_suggestions[0].appendChild(this);
       $(this).show();
-      $(this).animate({opacity: 1}, 1000);
+      setTimeout(function() 
+      {
+        autoSizeTags(tag_picker[0]);
+      }.bind(this), 550);
+
+      setTimeout(function() 
+      {
+        $(this).animate({opacity: 1}, 500);
+      }.bind(this), 550);
     }.bind(this), 1050);
   });
 }
 
+function autoSizeTags(tagsarea)
+{
+  // let style = window.getComputedStyle(textarea, null);
+  let scrollHeight = tagsarea.scrollHeight;
+  let tagsareaHeight = 0;
+
+  tagsarea.style.overflowY = 'hidden';
+  tagsareaHeight = scrollHeight;
+
+  tagsarea.style.height = tagsareaHeight + 'px';
+}
+
+autoSizeTags(tag_picker[0]);
+
 function autoSize(textarea)
 {
-  let style = window.getComputedStyle(textarea, null);
+  // let style = window.getComputedStyle(textarea, null);
   let scrollHeight = textarea.scrollHeight;
   let offsetHeight = 0;
   let textareaHeight = 0;
