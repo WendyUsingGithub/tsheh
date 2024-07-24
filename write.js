@@ -146,7 +146,6 @@ let article_tags = document.getElementsByClassName("article-tags");
 let article_tag_suggestions = document.getElementsByClassName("article-tag-suggestions");
 let tag_picker = document.getElementsByClassName("tag-picker");
 
-
 for (let i = 0; i < article_tag_arr.length; i++)
 {
   article_tag_arr[i].addEventListener("click", function()
@@ -160,12 +159,8 @@ for (let i = 0; i < article_tag_arr.length; i++)
       this.classList.remove('article-tag');
       article_tag_suggestions[0].appendChild(this);
       $(this).show();
-      setTimeout(function() 
-      {
-        autoSizeTags(tag_picker[0]);
-      }.bind(this), 550);
-
-      setTimeout(function() 
+      autoSizeTags(tag_picker[0]);
+      setTimeout(function()
       {
         $(this).animate({opacity: 1}, 500);
       }.bind(this), 550);
@@ -175,33 +170,29 @@ for (let i = 0; i < article_tag_arr.length; i++)
 
 function autoSizeTags(tagsarea)
 {
-  // let style = window.getComputedStyle(textarea, null);
   let scrollHeight = tagsarea.scrollHeight;
-  let tagsareaHeight = 0;
 
   tagsarea.style.overflowY = 'hidden';
-  tagsareaHeight = scrollHeight;
-
-  tagsarea.style.height = tagsareaHeight + 'px';
+  tagsarea.style.height = scrollHeight + 'px';
 }
 
-autoSizeTags(tag_picker[0]);
+
+prepare_publish_button.addEventListener('click', function()
+{
+  autoSizeTags(tag_picker[0]);
+});
 
 function autoSize(textarea)
 {
-  // let style = window.getComputedStyle(textarea, null);
   let scrollHeight = textarea.scrollHeight;
   let offsetHeight = 0;
   let textareaHeight = 0;
 
   textarea.style.overflowY = 'hidden';
   textareaHeight = scrollHeight + offsetHeight;
-
-  if(textareaHeight < window.innerHeight)
-  {
+  if(textareaHeight < window.innerHeight) {
     textareaHeight = window.innerHeight;
   }
-
   textarea.style.height = textareaHeight + 'px';
 }
 
