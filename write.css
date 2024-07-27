@@ -260,7 +260,7 @@
   margin-bottom: 3rem;
   cursor: pointer;
 }
-.write .add-tag-input .the-icon-tag {
+.write .add-tag-input .icon {
   position: absolute;
   top: 12%;
   left: 1rem;
@@ -282,6 +282,7 @@
 
 .write .article-tags {
   font-size: 0;
+  transition: height 0.5s ease-in-out;
 }
 .write .article-tag {
   position: relative;
@@ -293,23 +294,20 @@
   cursor: pointer;
   padding: 0.2rem 1rem 0.2rem 0rem;
 }
-.write .article-tag .the-icon-tag {
+.write .article-tag .icon {
   font-family: "Sometype Mono";
   position: absolute;
   left: 0;
   font-weight: 500;
   font-size: 1.25rem;
   color: var(--tsheh-black);
-  transition: opacity 0.3s;
-  transition-delay: opacity 0.15s;
 }
-.write .article-tag:hover .the-icon-tag {
-  color: var(--tsheh-gray);
+.write .article-tag:hover .icon {
   opacity: 0;
   transition-delay: opacity 0s;
   transition: opacity 0.15s;
 }
-.write .article-tag .the-icon-remove {
+.write .article-tag .icon-hover {
   font-family: "Sometype Mono";
   position: relative;
   color: var(--tsheh-gray);
@@ -320,66 +318,52 @@
   transition: opacity 0.3s;
   transition-delay: 0s;
 }
-.write .article-tag:hover .the-icon-remove {
+.write .article-tag:hover .icon-hover {
   opacity: 1;
   transition: opacity 0.3s;
   transition-delay: 0.15s;
 }
-
-/* @keyframes title {
-  0% {
-    opacity: 1;
-    max-width: 40%;
-    width: auto;
-  }
-  25% {
-    opacity: 0;
-    max-width: 40%;
-  }
-  100% {
-    opacity: 0;
-    max-width: 0;
-  }
-
-} */
-
-.write .tag-text {
+.write .article-tag:hover .text {
+  opacity: 1;
+  color: var(--tsheh-gray);
+  transition: opacity 0.3s;
+  transition-delay: 0.15s;
+}
+.write .article-tag .text {
   display: inline-flex;
   font-size: 0.95rem;
   letter-spacing: 0.06rem;
   cursor: pointer;
 }
-.write .article-tag:hover,
-.write .article-tag:active,
-.write .article-tag:focus {
-  color: var(--tsheh-gray);
-}
+
 .write .article-tag-suggestions {
-  transition: all 5s linear;
+  font-size: 0;
+  transition: height 0.5s ease-in-out;
 }
 .write .article-tag-suggestion {
   position: relative;
   display: inline-flex;
+  max-width: 100%;
   font-size: 0.95rem;
   font-weight: 450;
   color: var(--tsheh-gray);
   cursor: pointer;
-  padding: 0.2rem 0.8rem 0.2rem 0rem;
+  padding: 0.2rem 1rem 0.2rem 0rem;
 }
-.write .article-tag-suggestion .the-icon-tag {
+.write .article-tag-suggestion .icon {
   font-family: "Sometype Mono";
   position: absolute;
   left: 0;
   font-weight: 500;
   font-size: 1.25rem;
+  color: var(--tsheh-gray);
 }
-.write .article-tag-suggestion:hover .the-icon-tag {
-  color: var(--tsheh-black);
+.write .article-tag-suggestion:hover .icon {
   opacity: 0;
   transition-delay: opacity 0s;
   transition: opacity 0.15s;
 }
-.write .article-tag-suggestion .the-icon-remove {
+.write .article-tag-suggestion .icon-hover {
   font-family: "Sometype Mono";
   position: relative;
   color: var(--tsheh-black);
@@ -390,21 +374,22 @@
   transition: opacity 0.3s;
   transition-delay: 0s;
 }
-.write .article-tag-suggestion:hover .the-icon-remove {
+.write .article-tag-suggestion:hover .icon-hover {
   opacity: 1;
   transition: opacity 0.3s;
   transition-delay: 0.15s;
 }
-.write .article-tag-suggestion .tag-text {
+.write .article-tag-suggestion:hover .text {
+  opacity: 1;
+  color: var(--tsheh-black);
+  transition: opacity 0.3s;
+  transition-delay: 0.15s;
+}
+.write .article-tag-suggestion .text {
   display: inline-flex;
   font-size: 0.95rem;
   letter-spacing: 0.06rem;
   cursor: pointer;
-}
-.write .article-tag-suggestion :hover,
-.write .article-tag-suggestion :active,
-.write .article-tag-suggestion :focus {
-  color: var(--tsheh-black);
 }
 
 .write .arrow-icon {
@@ -413,7 +398,7 @@
   width: 2.5rem;
   border-radius: 100rem;
   color: var(--tsheh-black);
-  border: solid 0.15rem var(--tsheh-black); 
+  border: solid 0.15rem var(--tsheh-black);
   margin-bottom: 10rem;
   cursor: pointer;
   transition: all 0.3s ease-out;
@@ -428,6 +413,10 @@
   background-color: var(--tsheh-black);
   transform: scale(1.1);
 }
+
+/* .write .article_tag_suggestions {
+  background-color: red;
+} */
 /* 
 .write .swipe {
   position: relative;
