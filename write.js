@@ -142,77 +142,53 @@ renderCalendar();
 
 /* tag picker */
 
-function article_tag_eventListener(article_tag)
-{
-  article_tag.addEventListener("click", function()
-  {
-    $(this).animate({opacity: 0}, 0);
-    $(this).hide(1000);
-    setTimeout(function() 
-    {
-      this.classList.add('article-tag-suggestion');
-      this.classList.remove('article-tag');
-      (this.children)[0].innerText = "-";
-      (this.children)[1].innerText = "+";
-      article_tags[0].removeChild(this);
-      article_tag_suggestions[0].appendChild(this);
-      $(this).show();
-      autoSizeTags(article_tags[0]);
-      autoSizeTags(article_tag_suggestions[0]);
-      $(this).animate({opacity: 1}, 500);
-    }.bind(this), 1050);
-  });
-}
-
-function article_tag_suggestion_eventListener(article_tag_suggestion)
-{
-  article_tag_suggestion.addEventListener("click", function()
-  {
-    $(this).animate({opacity: 0}, 0);
-    $(this).hide(1000);
-    setTimeout(function() 
-    {
-      this.classList.add('article-tag');
-      this.classList.remove('article-tag-suggestion');
-      (this.children)[0].innerText = "#";
-      (this.children)[1].innerText = "-";
-      article_tag_suggestions[0].removeChild(this);
-      article_tags[0].appendChild(this);
-      $(this).show();
-      autoSizeTags(article_tags[0]);
-      $(this).animate({opacity: 1}, 500);
-    }.bind(this), 1050);
-  });
-}
-
 let article_tags = document.getElementsByClassName("article-tags");
 let article_tag_arr = document.getElementsByClassName("article-tag");
 let article_tag_suggestions = document.getElementsByClassName("article-tag-suggestions");
 let article_tag_suggestions_arr = document.getElementsByClassName("article-tag-suggestion");
 let tag_picker = document.getElementsByClassName("tag-picker");
 
+function article_tag2suggestion()
+{
+  $(this).animate({opacity: 0}, 0);
+  $(this).hide(800);
+  setTimeout(function() 
+  {
+    article_tags[0].removeChild(this);
+    create_tag("s", (this.children)[2].innerText);
+  }.bind(this), 850);
+}
+
+function article_suggestion2tag()
+{
+  $(this).animate({opacity: 0}, 0);
+  $(this).hide(800);
+  setTimeout(function() 
+  {
+    article_tag_suggestions[0].removeChild(this);
+    create_tag("t", (this.children)[2].innerText);
+  }.bind(this), 850);
+}
+
 for (let i = 0; i < article_tag_arr.length; i++)
 {
-  article_tag_eventListener(article_tag_arr[i]);
+  article_tag_arr[i].addEventListener("click", article_tag2suggestion.bind(article_tag_arr[i]));
 }
-
 for (let i = 0; i < article_tag_suggestions_arr.length; i++)
 {
-  article_tag_suggestion_eventListener(article_tag_suggestions_arr[i]);
+  article_tag_suggestions_arr[i].addEventListener("click", article_suggestion2tag.bind(article_tag_suggestions_arr[i]));
 }
 
-function autoSizeTags(tagsarea)
-{
-  let scrollHeight = tagsarea.scrollHeight;
-
-  tagsarea.style.overflowY = 'hidden';
-  tagsarea.style.height = scrollHeight + 'px';
-}
+// function autoSizeTags(tagsarea)
+// {
+//   tagsarea.style.overflowY = 'hidden';
+//   scrollHeight = tagsarea.scrollHeight;
+// }
 
 prepare_publish_button.addEventListener('click', function()
 {
-  autoSizeTags(article_tags[0]);
-  autoSizeTags(article_tag_suggestions[0]);
+  // autoSizeTags(article_tags[0]);
+  // autoSizeTags(article_tag_suggestions[0]);
 });
 
 function autoSize(textarea)
@@ -268,69 +244,80 @@ textarea_md.oninput = function() {
   autoSize(textarea_md);
 };
 
-let new_tag = document.getElementById("new-tag");
+/* add a new tag by input */
 
-new_tag.addEventListener("keyup", function(e)
+let input_tag = document.getElementById("input-tag");
+
+input_tag.addEventListener("keyup", function(e)
 {
   if (e.key == 'Enter') {
-    let newTag = new_tag.value;
-    console.log(newTag);
-
-    // <div class="article-tag">
-    //   <div class="icon">#</div>
-    //   <div class="icon-hover">-</div>
-    //   <div class="text">內容</div>
-    // </div>
-
-    let new_article_tag = document.createElement("div");
-    let new_icon_tag = document.createElement("div");
-    let new_icon_tag_remove = document.createElement("div");
-    let new_tag_text = document.createElement("div");
-
-    new_article_tag.classList.add('article-tag');
-    new_icon_tag.classList.add('icon');
-    new_icon_tag_remove.classList.add('icon-hover');
-    new_tag_text.classList.add('text');
-
-    new_icon_tag.innerText = "#";
-    new_icon_tag_remove.innerText = "-";
-    new_tag_text.innerText = new_tag.value;
-
-    new_article_tag.appendChild(new_icon_tag);
-    new_article_tag.appendChild(new_icon_tag_remove);
-    new_article_tag.appendChild(new_tag_text);
-
-    $(new_article_tag).animate({opacity: 0}, 0);
-    $(new_article_tag).hide();
-
-    article_tags[0].insertBefore(new_article_tag, article_tags[0].firstChild);
-
-    $(new_article_tag).show(1000);
-    $(new_article_tag).animate({opacity: 1}, 500);
-
-    console.log(new_article_tag);
-
-    new_article_tag.addEventListener("click", function()
-    {
-      $(this).animate({opacity: 0}, 0);
-      $(this).hide(1000);
-      setTimeout(function() 
-      {
-        this.classList.add('article-tag-suggestion');
-        this.classList.remove('article-tag');
-        (this.children)[0].innerText = "-";
-        (this.children)[1].innerText = "+";
-        article_tags[0].removeChild(this);
-        article_tag_suggestions[0].appendChild(this);
-        $(this).show();
-        autoSizeTags(tag_picker[0]);
-        $(this).animate({opacity: 1}, 500);
-      }.bind(this), 1050);
-    });
-    new_tag.value = "";
+    create_tag("t", input_tag.value);
   }
 });
 
+/* create a tag : "t" for article_tag, "s" for article_suggestion_tag */
+
+function create_tag(type, text)
+{
+  if(type == "t")
+  {
+    let tag = document.createElement("div");
+    let icon_tag = document.createElement("div");
+    let icon_tag_remove = document.createElement("div");
+    let text_tag = document.createElement("div");
+
+    tag.classList.add('article-tag');
+    icon_tag.classList.add('icon');
+    icon_tag_remove.classList.add('icon-hover');
+    text_tag.classList.add('text');
+
+    icon_tag.innerText = "#";
+    icon_tag_remove.innerText = "-";
+    text_tag.innerText = text;
+
+    tag.appendChild(icon_tag);
+    tag.appendChild(icon_tag_remove);
+    tag.appendChild(text_tag);
+
+    $(tag).animate({opacity: 0}, 0);
+    $(tag).hide();
+
+    article_tags[0].appendChild(tag);
+    tag.addEventListener("click", article_tag2suggestion.bind(tag));
+
+    $(tag).show(800);
+    $(tag).animate({opacity: 1}, 800);
+  }
+  else if(type == "s")
+  {
+    let suggestion_tag = document.createElement("div");
+    let icon_tag = document.createElement("div");
+    let icon_tag_remove = document.createElement("div");
+    let text_tag = document.createElement("div");
+    
+    suggestion_tag.classList.add('article-tag-suggestion');
+    icon_tag.classList.add('icon');
+    icon_tag_remove.classList.add('icon-hover');
+    text_tag.classList.add('text');
+
+    icon_tag.innerText = "-";
+    icon_tag_remove.innerText = "+";
+    text_tag.innerText = text;
+
+    suggestion_tag.appendChild(icon_tag);
+    suggestion_tag.appendChild(icon_tag_remove);
+    suggestion_tag.appendChild(text_tag);
+
+    $(suggestion_tag).animate({opacity: 0}, 0);
+    $(suggestion_tag).hide();
+
+    suggestion_tag.addEventListener("click", article_suggestion2tag.bind(suggestion_tag));
+    article_tag_suggestions[0].appendChild(suggestion_tag);
+    
+    $(suggestion_tag).show(800);
+    $(suggestion_tag).animate({opacity: 1}, 800);
+  }
+}
 
 function getInputValue() {
   // Selecting the input element and get its value 

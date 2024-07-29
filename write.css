@@ -235,7 +235,6 @@
 .write .tag-picker {
   justify-content: center;
   padding-bottom: 4.5rem;
-  transition: height 0.5s ease-in-out;
 }
 .write .tag-icon {
   display: inline-flex;
@@ -250,7 +249,7 @@
   font-size: 1.55rem;
   font-weight: 400;
 }
-.write .add-tag-input {
+.write .article_input_tag {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -260,7 +259,7 @@
   margin-bottom: 3rem;
   cursor: pointer;
 }
-.write .add-tag-input .icon {
+.write .article_input_tag .icon {
   position: absolute;
   top: 12%;
   left: 1rem;
@@ -268,7 +267,7 @@
   font-size: 1.35rem;
   font-weight: 500;
 }
-.write .add-tag-input input {
+.write .article_input_tag input {
   position: absolute;
   top: 5%;
   left: 2rem;
@@ -282,7 +281,6 @@
 
 .write .article-tags {
   font-size: 0;
-  transition: height 0.5s ease-in-out;
 }
 .write .article-tag {
   position: relative;
@@ -338,7 +336,6 @@
 
 .write .article-tag-suggestions {
   font-size: 0;
-  transition: height 0.5s ease-in-out;
 }
 .write .article-tag-suggestion {
   position: relative;
@@ -407,16 +404,18 @@
   font-size: 1.6rem;
   font-weight: 500;
 }
-
 .write .arrow-icon:hover {
   color: white;
   background-color: var(--tsheh-black);
   transform: scale(1.1);
 }
 
-/* .write .article_tag_suggestions {
-  background-color: red;
-} */
+.write .article-tag .material-symbols-outlined {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+
 /* 
 .write .swipe {
   position: relative;
@@ -464,8 +463,3 @@
 .swipe:hover .cc {
   left: calc(100% - 3rem);
 } */
-
-.write .article-tag .material-symbols-outlined {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
